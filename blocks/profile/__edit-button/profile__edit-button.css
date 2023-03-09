@@ -1,0 +1,9 @@
+.profile__edit-button {
+  height: 24px;
+  width: 24px;
+  background: url(../../../images/edit_button.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
