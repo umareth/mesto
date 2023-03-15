@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="root">
@@ -41,7 +41,9 @@
             <img src="/images/items1.jpg" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Карачаевск</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
 
@@ -49,7 +51,9 @@
             <img src="/images/items2.png" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Гора Эльбрус</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
 
@@ -57,7 +61,9 @@
             <img src="/images/items3.png" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Домбай</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
 
@@ -65,7 +71,9 @@
             <img src="/images/items4.png" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Гора Эльбрус</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
 
@@ -73,7 +81,9 @@
             <img src="/images/items5.png" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Домбай</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
 
@@ -81,7 +91,9 @@
             <img src="/images/items6.png" alt="" class="gallery__image" />
             <div class="gallery__bottom">
               <h3 class="gallety__title">Карачаевск-Черкеск</h3>
-              <button class="gallery__like-button"></button>
+              <button
+                class="gallery__like-button gallery__like-button-active"
+              ></button>
             </div>
           </div>
         </section>
@@ -89,6 +101,27 @@
       <footer class="footer">
         <p class="footer__copyright">© 2023 Шахидов Умар</p>
       </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <form class="popup__form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input
+              type="text"
+              placeholder="Имя"
+              class="popup__name"
+              value="Жак-Ив Кусто"
+            />
+            <input
+              type="text"
+              placeholder="Специальность"
+              class="popup__speciality"
+            />
+            <button type="submit" class="popup__button">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close-btn"></button>
+        </div>
+      </div>
     </div>
+    <script src="./scripts/scripts.js"></script>
   </body>
 </html>

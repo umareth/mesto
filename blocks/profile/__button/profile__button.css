@@ -5,4 +5,17 @@
   background-repeat: no-repeat;
   background-position: 50%;
   border: 2px solid #fff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button {
+    height: 50px;
+    width: 282px;
+    background-size: 16px;
+  }
 }
