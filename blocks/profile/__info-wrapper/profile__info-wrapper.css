@@ -1,7 +1,6 @@
 .profile__info-wrapper {
   display: flex;
   align-items: baseline;
-  justify-content: center;
   position: relative;
 }
 
