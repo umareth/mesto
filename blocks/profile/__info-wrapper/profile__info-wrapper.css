@@ -1,10 +1,11 @@
 .profile__info-wrapper {
   display: flex;
   align-items: baseline;
-  position: relative;
+  gap: 20px;
 }
 
 @media screen and (max-width: 767px) {
   .profile__info-wrapper {
+    gap: 10px;
   }
 }

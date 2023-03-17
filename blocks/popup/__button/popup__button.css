@@ -2,15 +2,19 @@
   background: #000;
   color: #fff;
   border: 0;
-  height: 50px;
-  max-width: 358px;
+  padding: 14px 0 14px 0;
   width: 100%;
   margin-top: 48px;
   border-radius: 2px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.popup__button:hover{
-  opacity: .6;
+.popup__button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {

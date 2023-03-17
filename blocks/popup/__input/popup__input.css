@@ -1,4 +1,4 @@
-.popup__speciality {
+.popup__input {
   max-width: 358px;
   width: 100%;
   font-weight: 400;
@@ -6,6 +6,10 @@
   line-height: 17px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0 0 13px 0;
+  padding: 0 0 8px 0;
   outline: none;
+}
+
+.popup__input:nth-last-child(2) {
+  margin-top: 31px;
 }

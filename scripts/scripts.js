@@ -6,19 +6,19 @@ let popupSaveButtonForm = document.querySelector(".popup__form");
 let profileTitle = document.querySelector(".profile__title");
 let profileSunbtitle = document.querySelector(".profile__subtitle");
 
-let popupName = document.querySelector(".popup__name");
-let popupSpeciality = document.querySelector(".popup__speciality");
+let popupName = document.querySelector(".popup__input_value_name");
+let popupSpeciality = document.querySelector(".popup__input_value_speciality");
 
 function openPopup() {
-  popupElement.classList.toggle("popup__opened");
+  popupElement.classList.toggle("popup_opened");
   popupName.value = profileTitle.textContent;
   popupSpeciality.value = profileSunbtitle.textContent;
 }
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  profileTitle.innerHTML = popupName.value;
-  profileSunbtitle.innerHTML = popupSpeciality.value;
+  profileTitle.textContent = popupName.value;
+  profileSunbtitle.textContent = popupSpeciality.value;
   openPopup();
 }
 

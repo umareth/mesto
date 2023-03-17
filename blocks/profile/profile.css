@@ -3,7 +3,6 @@
   justify-content: space-between;
   padding-top: 40px;
   align-items: center;
-  font-family: "Inter";
 }
 
 @media screen and (max-width: 1023px) {
@@ -17,6 +16,3 @@
     flex-direction: column;
   }
 }
-
-
-

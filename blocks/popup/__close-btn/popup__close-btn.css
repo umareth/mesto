@@ -2,11 +2,12 @@
   background: url(../../../images/popup__close-btn.svg) no-repeat;
   position: absolute;
   top: -40px;
-  right: -40px;
+  right: -44px;
   width: 36px;
   height: 36px;
   border: 0;
   transition: ease-in 0.5s;
+  cursor: pointer;
 }
 
 .popup__close-btn:hover {
@@ -17,6 +18,5 @@
   .popup__close-btn {
     top: -49px;
     right: -2px;
+  }
 }
-}
-

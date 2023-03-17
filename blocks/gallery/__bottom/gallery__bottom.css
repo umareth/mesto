@@ -2,11 +2,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  padding: 0 20px 0 20px;
+  padding: 25px 20px 25px 20px;
   border-radius: 0 0 10px 10px;
   align-items: center;
-}
-
-.cards__like_active {
-  background: transparent url(images/like_active.fe17a51….svg) no-repeat 50%;
 }
