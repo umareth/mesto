@@ -8,6 +8,7 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  flex-shrink: 50;
 }
 
 @media screen and (max-width: 767px) {
