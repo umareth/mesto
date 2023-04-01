@@ -3,7 +3,8 @@ let popupElementAdding = document.querySelector(".popup__adding");
 let popupCloseButton = document.querySelectorAll(".popup__close-btn");
 let popupOpenButton = document.querySelector(".profile__edit-button");
 let popupaddingOpenButton = document.querySelector(".profile__button");
-let popupSaveFormButton = document.querySelector(".popup__form");
+let popupEditFormButton = document.querySelector(".popup__form_type_edit");
+let popupAddFormButton = document.querySelector(".popup__form_type_add");
 let profileTitle = document.querySelector(".profile__title");
 let profileSunbtitle = document.querySelector(".profile__subtitle");
 
@@ -19,7 +20,7 @@ let galleryDeleteButton = document.querySelector(".gallery__delete-button");
 
 let galleryTitle = document.querySelector(".gallery__title");
 
-let popupAddingButton = document.querySelector(".popup__adding-button");
+let popupAddingButton = document.querySelector(".popup__form");
 
 let initialCards = [
   {
@@ -110,10 +111,11 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSunbtitle.textContent = popupSpeciality.value;
-  openPopup();
+  closePopup();
 }
 
 function handleFormSubmitCard(evt) {
+  console.log('hi')
   evt.preventDefault();
   console.log(popupCardName.value, popupCardLink.value);
   galleryContainer.append(createGalleryCard({ name: popupCardName.value, link: popupCardLink.value }));
@@ -123,5 +125,5 @@ function handleFormSubmitCard(evt) {
 popupOpenButton.addEventListener("click", () => openPopup(popupElement));
 popupCloseButton.forEach((element) => element.addEventListener("click", closePopup));
 popupaddingOpenButton.addEventListener("click", () => openPopup(popupElementAdding));
-popupSaveFormButton.addEventListener("submit", handleFormSubmit);
-popupAddingButton.addEventListener("click", handleFormSubmitCard);
+popupEditFormButton.addEventListener("submit", handleFormSubmit);
+popupAddFormButton.addEventListener("submit", handleFormSubmitCard);
