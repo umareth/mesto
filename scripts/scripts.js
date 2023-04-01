@@ -118,7 +118,7 @@ function handleFormSubmitCard(evt) {
   console.log('hi')
   evt.preventDefault();
   console.log(popupCardName.value, popupCardLink.value);
-  galleryContainer.append(createGalleryCard({ name: popupCardName.value, link: popupCardLink.value }));
+  galleryContainer.prepend(createGalleryCard({ name: popupCardName.value, link: popupCardLink.value }));
   closePopup();
 }
 
