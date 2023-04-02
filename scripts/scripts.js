@@ -51,7 +51,7 @@ let initialCards = [
 
 let popupImage = document.querySelector(".popup__image");
 let popupCaption = document.querySelector(".popup__caption");
-let popupImageContainer = document.querySelector(".popup_container_type_image");
+let popupImageContainer = document.querySelector(".popup_banner");
 
 
 
