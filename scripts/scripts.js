@@ -1,5 +1,5 @@
 let popupElement = document.querySelector(".popup");
-let popupElementAdding = document.querySelector(".popup__adding");
+let popupElementAdding = document.querySelector(".popup_adding");
 let popupCloseButton = document.querySelectorAll(".popup__close-btn");
 let popupOpenButton = document.querySelector(".profile__edit-button");
 let popupaddingOpenButton = document.querySelector(".profile__button");
@@ -51,7 +51,7 @@ let initialCards = [
 
 let popupImage = document.querySelector(".popup__image");
 let popupCaption = document.querySelector(".popup__caption");
-let popupImageContainer = document.querySelector(".popup__container_type_image");
+let popupImageContainer = document.querySelector(".popup_container_type_image");
 
 
 
