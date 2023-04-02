@@ -4,7 +4,6 @@ const popupProfileClose = popupElement.querySelector(".popup__close-btn");
 const popupElementAdding = document.querySelector(".popup_adding");
 const popupAddingClose = popupElementAdding.querySelector(".popup__close-btn");
 
-const popupCloseButtons = document.querySelector(".popup__close-btn");
 const popupOpenButton = document.querySelector(".profile__edit-button");
 const popupaddingOpenButton = document.querySelector(".profile__button");
 const popupEditFormButton = document.querySelector(".popup__form_type_edit");
