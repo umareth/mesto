@@ -1,26 +1,24 @@
-let popupElement = document.querySelector(".popup");
-let popupElementAdding = document.querySelector(".popup_adding");
-let popupCloseButton = document.querySelectorAll(".popup__close-btn");
-let popupOpenButton = document.querySelector(".profile__edit-button");
-let popupaddingOpenButton = document.querySelector(".profile__button");
-let popupEditFormButton = document.querySelector(".popup__form_type_edit");
-let popupAddFormButton = document.querySelector(".popup__form_type_add");
-let profileTitle = document.querySelector(".profile__title");
-let profileSunbtitle = document.querySelector(".profile__subtitle");
+const popupElement = document.querySelector(".profile-popup");
+const popupElementAdding = document.querySelector(".popup_adding");
+const popupCloseButtons = document.querySelectorAll(".popup__close-btn");
+const popupOpenButton = document.querySelector(".profile__edit-button");
+const popupaddingOpenButton = document.querySelector(".profile__button");
+const popupEditFormButton = document.querySelector(".popup__form_type_edit");
+const popupAddFormButton = document.querySelector(".popup__form_type_add");
+const profileTitle = document.querySelector(".profile__title");
+const profileSunbtitle = document.querySelector(".profile__subtitle");
 
-let popupName = document.querySelector(".popup__input_value_name");
-let popupSpeciality = document.querySelector(".popup__input_value_speciality");
+const popupName = document.querySelector(".popup__input_value_name");
+const popupSpeciality = document.querySelector(".popup__input_value_speciality");
 
-let popupCardName = document.querySelector(".popup__input_value_cardname");
-let popupCardLink = document.querySelector(".popup__input_value_cardlink");
+const popupCardName = document.querySelector(".popup__input_value_cardname");
+const popupCardLink = document.querySelector(".popup__input_value_cardlink");
 
-let galleryButtonLike = document.querySelectorAll(".gallery__like-button");
-let galleryContainer = document.querySelector(".gallery");
-let galleryDeleteButton = document.querySelector(".gallery__delete-button");
+const galleryButtonLike = document.querySelectorAll(".gallery__like-button");
+const galleryContainer = document.querySelector(".gallery");
+const galleryDeleteButton = document.querySelector(".gallery__delete-button");
 
-let galleryTitle = document.querySelector(".gallery__title");
-
-let popupAddingButton = document.querySelector(".popup__form");
+const galleryTitle = document.querySelector(".gallery__title");
 
 let initialCards = [
   {
@@ -49,16 +47,16 @@ let initialCards = [
   },
 ];
 
-let popupImage = document.querySelector(".popup__image");
-let popupCaption = document.querySelector(".popup__caption");
-let popupImageContainer = document.querySelector(".popup_banner");
+const popupImage = document.querySelector(".popup__image");
+const popupCaption = document.querySelector(".popup__caption");
+const popupImageContainer = document.querySelector(".popup_banner");
 
 
 
 //Функция создания, удаления карточки
 function createGalleryCard({ name, link }) {
-  let galleryTemplate = document.querySelector("#gallery__template").content;
-  let galleryCard = galleryTemplate.querySelector(".gallery__items").cloneNode(true);
+  const galleryTemplate = document.querySelector("#gallery__template").content;
+  const galleryCard = galleryTemplate.querySelector(".gallery__items").cloneNode(true);
   galleryCard.querySelector(".gallery__image").src = link;
   galleryCard.querySelector(".gallery__image").alt = name;
   galleryCard.querySelector(".gallery__title").textContent = name;
@@ -121,7 +119,7 @@ function handleFormSubmitCard(evt) {
 }
 
 popupOpenButton.addEventListener("click", () => openPopup(popupElement));
-popupCloseButton.forEach((element) => element.addEventListener("click", closePopup));
+popupCloseButtons.forEach((element) => element.addEventListener("click", closePopup));
 popupaddingOpenButton.addEventListener("click", () => openPopup(popupElementAdding));
 popupEditFormButton.addEventListener("submit", handleFormSubmit);
 popupAddFormButton.addEventListener("submit", handleFormSubmitCard);
