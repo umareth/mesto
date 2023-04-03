@@ -12,9 +12,7 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSunbtitle = document.querySelector(".profile__subtitle");
 
 const popupName = document.querySelector(".popup__input_value_name");
-const popupSpeciality = document.querySelector(
-  ".popup__input_value_speciality"
-);
+const popupSpeciality = document.querySelector(".popup__input_value_speciality");
 
 const popupCardName = document.querySelector(".popup__input_value_cardname");
 const popupCardLink = document.querySelector(".popup__input_value_cardlink");
@@ -31,7 +29,7 @@ const galleryDeleteButton = document.querySelector(".gallery__delete-button");
 
 const galleryTitle = document.querySelector(".gallery__title");
 
-let initialCards = [
+const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -61,30 +59,20 @@ let initialCards = [
 //Функция создания, удаления карточки
 function createGalleryCard({ name, link }) {
   const galleryTemplate = document.querySelector("#gallery__template").content;
-  const galleryCard = galleryTemplate
-    .querySelector(".gallery__items")
-    .cloneNode(true);
+  const galleryCard = galleryTemplate.querySelector(".gallery__items").cloneNode(true);
   galleryCard.querySelector(".gallery__image").src = link;
   galleryCard.querySelector(".gallery__image").alt = name;
   galleryCard.querySelector(".gallery__title").textContent = name;
 
-  galleryCard
-    .querySelector(".gallery__delete-button")
-    .addEventListener("click", () => removeCard(galleryCard));
+  galleryCard.querySelector(".gallery__delete-button").addEventListener("click", () => removeCard(galleryCard));
 
-  galleryCard
-    .querySelector(".gallery__like-button")
-    .addEventListener("click", (e) => likeCard(e));
+  galleryCard.querySelector(".gallery__like-button").addEventListener("click", (e) => likeCard(e));
 
-  galleryCard
-    .querySelector(".gallery__image")
-    .addEventListener("click", () => showImage(name, link));
+  galleryCard.querySelector(".gallery__image").addEventListener("click", () => showImage(name, link));
   return galleryCard;
 }
 
-initialCards.forEach((item) =>
-  galleryContainer.prepend(createGalleryCard(item))
-);
+initialCards.forEach((item) => galleryContainer.prepend(createGalleryCard(item)));
 
 // Функция удаления карточки
 function removeCard(card) {
@@ -125,9 +113,7 @@ function handleFormSubmit(evt) {
 // Фнкция сохранения попапа карточки
 function handleFormSubmitCard(evt) {
   evt.preventDefault();
-  galleryContainer.prepend(
-    createGalleryCard({ name: popupCardName.value, link: popupCardLink.value })
-  );
+  galleryContainer.prepend(createGalleryCard({ name: popupCardName.value, link: popupCardLink.value }));
   closePopup(popupElementAdding);
 }
 
@@ -142,9 +128,7 @@ popupaddingOpenButton.addEventListener("click", () => {
 });
 
 popupProfileClose.addEventListener("click", () => closePopup(popupElement));
-popupAddingClose.addEventListener("click", () =>
-  closePopup(popupElementAdding)
-);
+popupAddingClose.addEventListener("click", () => closePopup(popupElementAdding));
 popupImageClose.addEventListener("click", () => closePopup(popupBanner));
 
 popupEditFormButton.addEventListener("submit", handleFormSubmit);
