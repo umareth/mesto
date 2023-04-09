@@ -1,3 +1,5 @@
+
+
 const popupElement = document.querySelector(".profile-popup");
 const popupProfileClose = popupElement.querySelector(".popup__close-btn");
 
@@ -95,12 +97,33 @@ function likeCard(e) {
 // Функция открывания попапа
 function openPopup(evt) {
   evt.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 // Функция закрытия попапа
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupEsc);
 }
+
+// Функция закрытия попапа по нажатию ESC
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened')
+    closePopup(openPopup);
+  }
+}
+
+// Функция закрытия попапа по клику
+function closePopupOverlay(evt) {
+  if (evt.target !== evt.currentTarget) {
+    return;
+  };
+    closePopup(evt.currentTarget);
+};
+
+document.querySelectorAll('.popup').forEach(evt => {evt.addEventListener('click', closePopupOverlay)});;
+
 
 // Фнкция сохранения попапа профиля
 function handleFormSubmit(evt) {
