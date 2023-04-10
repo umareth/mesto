@@ -15,12 +15,12 @@ configValidation = ({
   } 
 
   function setEventListeners(formElement, { inputSelector, submitButtonSelector, ...rest }) {
-    const inputsList = Array.from(formElement.querySelectorAll(inputSelector));
+    const formInputs = Array.from(formElement.querySelectorAll(inputSelector));
     const buttonElement = formElement.querySelector(submitButtonSelector);
-    inputsList.forEach((inputElement) => {
+    formInputs.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         checkInputValidity(formElement, inputElement, rest);
-        toggleButtonState(inputsList, buttonElement, rest);
+        toggleButtonState(formInputs, buttonElement, rest);
       })
     });
   };
@@ -46,8 +46,8 @@ configValidation = ({
     errorElement.textContent = '';
   };
     // проверка валидности инпута
-  function hasInvalidInput(inputsList) {
-    return inputsList.some((inputElement) => {
+  function hasInvalidInput(formInputs) {
+    return formInputs.some((inputElement) => {
       return !inputElement.validity.valid;
     })
   };
@@ -56,7 +56,7 @@ configValidation = ({
       buttonElement.classList.remove(configValidation.inactiveButtonClass);
       buttonElement.disabled = false;
     };
-
+    // отключение/включение кнопки submit
     const DisableSubmitButton = (buttonElement, configValidation) => {
       buttonElement.classList.add(configValidation.inactiveButtonClass);
       buttonElement.disabled = true;
