@@ -14,7 +14,7 @@ function enableValidation({ formSelector, ...rest }) {
   });
 }
 
-function setEventListeners(formElement, { inputSelector, submitButtonSelector, ...rest }) {
+function setEventListeners(formElement, {inputSelector, submitButtonSelector, ...rest}) {
   const formInputs = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
   formInputs.forEach((inputElement) => {
@@ -25,7 +25,7 @@ function setEventListeners(formElement, { inputSelector, submitButtonSelector, .
   });
 }
 // добавление класса с ошибкой для инпутабокса
-function checkInputValidity(formElement, inputElement, { ...rest }) {
+function checkInputValidity(formElement, inputElement, {...rest}) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
   if (!inputElement.validity.valid) {
     showInputError(errorElement, inputElement, rest);
@@ -36,7 +36,7 @@ function checkInputValidity(formElement, inputElement, { ...rest }) {
 
 // проверка валидности инпута
 function hasInvalidInput(formInputs) {
-  return formInputs.some((inputElement) => {return !inputElement.validity.valid;});
+  return formInputs.some((inputElement) => !inputElement.validity.valid;);
 }
 
 // добавление класса с ошибкой для span
