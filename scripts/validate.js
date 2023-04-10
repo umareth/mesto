@@ -36,7 +36,7 @@ function checkInputValidity(formElement, inputElement, {...rest}) {
 
 // проверка валидности инпута
 function hasInvalidInput(formInputs) {
-  return formInputs.some((inputElement) => !inputElement.validity.valid;);
+  return formInputs.some((inputElement) => !inputElement.validity.valid);
 }
 
 // добавление класса с ошибкой для span
