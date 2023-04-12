@@ -1,5 +1,3 @@
-const popup = document.querySelectorAll('.popup__form')
-
 const popupProfile = document.querySelector(".profile-popup");
 const popupProfileClose = popupProfile.querySelector(".popup__close-btn");
 
@@ -145,12 +143,12 @@ popupOpenButton.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupSpeciality.value = profileSunbtitle.textContent;
   openPopup(popupProfile);
-  resetErrors(popup);
+  resetErrors(popupProfile);
 });
 popupaddingOpenButton.addEventListener("click", () => {
   openPopup(popupElementAdding);
   popupAddFormButton.reset();
-  resetErrors(popup);
+  resetErrors(popupElementAdding);
 });
 
 popupProfileClose.addEventListener("click", () => closePopup(popupProfile));

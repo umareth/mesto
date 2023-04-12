@@ -72,14 +72,12 @@ function toggleButtonState(inputList, buttonElement, config) {
 }
 
 function resetErrors(form){
-  form.forEach(function(element) {
-    element.querySelectorAll(config.inputSelector).forEach((inputElement) => {
-      const errorElement = element.querySelector(`.${inputElement.id}-input-error`);
+    form.querySelectorAll(config.inputSelector).forEach((inputElement) => {
+      const errorElement = form.querySelector(`.${inputElement.id}-input-error`);
       hideInputError(errorElement, inputElement, config);
     });
-    const buttonElement = element.querySelector(config.submitButtonSelector);
+    const buttonElement = form.querySelector(config.submitButtonSelector);
     disableSubmitButton(buttonElement, config);
-  });
 }
 
 
