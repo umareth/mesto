@@ -1,4 +1,4 @@
-configValidation = {
+config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -40,35 +40,47 @@ function hasInvalidInput(formInputs) {
 }
 
 // добавление класса с ошибкой для span
-function showInputError(errorElement, inputElement, configValidation) {
+function showInputError(errorElement, inputElement, config) {
   errorElement.textContent = inputElement.validationMessage;
-  errorElement.classList.add(configValidation.errorClass);
-  inputElement.classList.add(configValidation.inputErrorClass);
+  errorElement.classList.add(config.errorClass);
+  inputElement.classList.add(config.inputErrorClass);
 }
 // удаление класса с ошибкой
-function hideInputError(errorElement, inputElement, configValidation) {
-  inputElement.classList.remove(configValidation.inputErrorClass);
-  errorElement.classList.remove(configValidation.errorClass);
+function hideInputError(errorElement, inputElement, config) {
+  inputElement.classList.remove(config.inputErrorClass);
+  errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 }
 
 // отключение/включение кнопки submit
-const enableSubmitButton = (buttonElement, configValidation) => {
-  buttonElement.classList.remove(configValidation.inactiveButtonClass);
+const enableSubmitButton = (buttonElement, config) => {
+  buttonElement.classList.remove(config.inactiveButtonClass);
   buttonElement.disabled = false;
 };
 // отключение/включение кнопки submit
-const DisableSubmitButton = (buttonElement, configValidation) => {
-  buttonElement.classList.add(configValidation.inactiveButtonClass);
+const disableSubmitButton = (buttonElement, config) => {
+  buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
 };
 
-function toggleButtonState(inputList, buttonElement, configValidation) {
+function toggleButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
-    DisableSubmitButton(buttonElement, configValidation);
+    disableSubmitButton(buttonElement, config);
   } else {
-    enableSubmitButton(buttonElement, configValidation);
+    enableSubmitButton(buttonElement, config);
   }
 }
 
-enableValidation(configValidation);
+function reset(form){
+  form.forEach(function(element) {
+    element.querySelectorAll(config.inputSelector).forEach((inputElement) => {
+      const errorElement = element.querySelector(`.${inputElement.id}-input-error`);
+      hideInputError(errorElement, inputElement, config);
+    });
+    const buttonElement = element.querySelector(config.submitButtonSelector);
+    disableSubmitButton(buttonElement, config);
+  });
+}
+
+
+enableValidation(config);

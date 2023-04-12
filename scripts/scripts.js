@@ -1,7 +1,7 @@
+const popup = document.querySelectorAll('.popup__form')
 
-
-const popupElement = document.querySelector(".profile-popup");
-const popupProfileClose = popupElement.querySelector(".popup__close-btn");
+const popupProfile = document.querySelector(".profile-popup");
+const popupProfileClose = popupProfile.querySelector(".popup__close-btn");
 
 const popupElementAdding = document.querySelector(".popup_adding");
 const popupAddingClose = popupElementAdding.querySelector(".popup__close-btn");
@@ -25,6 +25,8 @@ const popupCaption = document.querySelector(".popup__caption");
 const popupImageContainer = document.querySelector(".popup_banner");
 const popupImageClose = popupBanner.querySelector(".popup__close-btn");
 
+
+const galleryTemplate = document.querySelector("#gallery__template").content;
 const galleryButtonLike = document.querySelectorAll(".gallery__like-button");
 const galleryContainer = document.querySelector(".gallery");
 const galleryDeleteButton = document.querySelector(".gallery__delete-button");
@@ -60,7 +62,6 @@ const initialCards = [
 
 //Функция создания, удаления карточки
 function createGalleryCard({ name, link }) {
-  const galleryTemplate = document.querySelector("#gallery__template").content;
   const galleryCard = galleryTemplate.querySelector(".gallery__items").cloneNode(true);
   galleryCard.querySelector(".gallery__image").src = link;
   galleryCard.querySelector(".gallery__image").alt = name;
@@ -95,14 +96,14 @@ function likeCard(e) {
 }
 
 // Функция открывания попапа
-function openPopup(evt) {
-  evt.classList.add("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
   document.addEventListener('keydown', closePopupEsc);
 }
 
 // Функция закрытия попапа
-function closePopup(evt) {
-  evt.classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', closePopupEsc);
 }
 
@@ -130,7 +131,7 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSunbtitle.textContent = popupSpeciality.value;
-  closePopup(popupElement);
+  closePopup(popupProfile);
 }
 
 // Фнкция сохранения попапа карточки
@@ -143,14 +144,16 @@ function handleFormSubmitCard(evt) {
 popupOpenButton.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupSpeciality.value = profileSunbtitle.textContent;
-  openPopup(popupElement);
+  openPopup(popupProfile);
+  reset(popup);
 });
 popupaddingOpenButton.addEventListener("click", () => {
   openPopup(popupElementAdding);
   popupAddFormButton.reset();
+  reset(popup);
 });
 
-popupProfileClose.addEventListener("click", () => closePopup(popupElement));
+popupProfileClose.addEventListener("click", () => closePopup(popupProfile));
 popupAddingClose.addEventListener("click", () => closePopup(popupElementAdding));
 popupImageClose.addEventListener("click", () => closePopup(popupBanner));
 
