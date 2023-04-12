@@ -145,12 +145,12 @@ popupOpenButton.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupSpeciality.value = profileSunbtitle.textContent;
   openPopup(popupProfile);
-  reset(popup);
+  resetErrors(popup);
 });
 popupaddingOpenButton.addEventListener("click", () => {
   openPopup(popupElementAdding);
   popupAddFormButton.reset();
-  reset(popup);
+  resetErrors(popup);
 });
 
 popupProfileClose.addEventListener("click", () => closePopup(popupProfile));

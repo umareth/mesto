@@ -71,7 +71,7 @@ function toggleButtonState(inputList, buttonElement, config) {
   }
 }
 
-function reset(form){
+function resetErrors(form){
   form.forEach(function(element) {
     element.querySelectorAll(config.inputSelector).forEach((inputElement) => {
       const errorElement = element.querySelector(`.${inputElement.id}-input-error`);
