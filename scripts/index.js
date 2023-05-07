@@ -1,3 +1,7 @@
+import {Card} from './Card.js';
+import {FormValidator} from './validate.js';
+
+
 const popupProfile = document.querySelector(".profile-popup");
 const popupProfileClose = popupProfile.querySelector(".popup__close-btn");
 
@@ -6,6 +10,7 @@ const popupAddingClose = popupElementAdding.querySelector(".popup__close-btn");
 
 const popupOpenButton = document.querySelector(".profile__edit-button");
 const popupaddingOpenButton = document.querySelector(".profile__button");
+const popupForm = document.querySelector(".popup__form");
 const popupEditFormButton = document.querySelector(".popup__form_type_edit");
 const popupAddFormButton = document.querySelector(".popup__form_type_add");
 const profileTitle = document.querySelector(".profile__title");
@@ -58,26 +63,27 @@ const initialCards = [
   },
 ];
 
-//Функция создания, удаления карточки
-function createGalleryCard({ name, link }) {
-  const galleryCard = galleryTemplate.querySelector(".gallery__items").cloneNode(true);
-  galleryCard.querySelector(".gallery__image").src = link;
-  galleryCard.querySelector(".gallery__image").alt = name;
-  galleryCard.querySelector(".gallery__title").textContent = name;
-
-  galleryCard.querySelector(".gallery__delete-button").addEventListener("click", () => removeCard(galleryCard));
-
-  galleryCard.querySelector(".gallery__like-button").addEventListener("click", (e) => likeCard(e));
-
-  galleryCard.querySelector(".gallery__image").addEventListener("click", () => showImage(name, link));
-  return galleryCard;
+const configValidation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
 }
 
-initialCards.forEach((item) => galleryContainer.prepend(createGalleryCard(item)));
+initialCards.forEach((item) => galleryContainer.prepend(createCard(item)));
 
-// Функция удаления карточки
-function removeCard(card) {
-  card.remove();
+function addCard (dataCard) {
+	galleryContainer.prepend(createCard(dataCard));	
+}
+
+//Функция создания, удаления карточки
+function createCard(dataCard) {
+  const card = new Card(dataCard, galleryTemplate, showImage);
+  const cardElement = card.generateCard();
+
+  return cardElement;
 }
 
 // Функция открытия картинки карточки
@@ -88,10 +94,6 @@ function showImage(name, link) {
   openPopup(popupImageContainer);
 }
 
-// Функция лайка карточки
-function likeCard(e) {
-  e.target.classList.toggle("gallery__like-button_active");
-}
 
 // Функция открывания попапа
 function openPopup(popup) {
@@ -135,20 +137,20 @@ function handleFormSubmit(evt) {
 // Фнкция сохранения попапа карточки
 function handleFormSubmitCard(evt) {
   evt.preventDefault();
-  galleryContainer.prepend(createGalleryCard({ name: popupCardName.value, link: popupCardLink.value }));
+  galleryContainer.prepend(createCard({ name: popupCardName.value, link: popupCardLink.value }));
   closePopup(popupElementAdding);
 }
 
 popupOpenButton.addEventListener("click", () => {
   popupName.value = profileTitle.textContent;
   popupSpeciality.value = profileSunbtitle.textContent;
+  profileFormValidator.resetErrors();
   openPopup(popupProfile);
-  resetErrors(popupProfile);
 });
 popupaddingOpenButton.addEventListener("click", () => {
-  openPopup(popupElementAdding);
   popupAddFormButton.reset();
-  resetErrors(popupElementAdding);
+  cardAddFormValidator.resetErrors();
+  openPopup(popupElementAdding);
 });
 
 popupProfileClose.addEventListener("click", () => closePopup(popupProfile));
@@ -157,3 +159,9 @@ popupImageClose.addEventListener("click", () => closePopup(popupBanner));
 
 popupEditFormButton.addEventListener("submit", handleFormSubmit);
 popupAddFormButton.addEventListener("submit", handleFormSubmitCard);
+
+const profileFormValidator = new FormValidator(configValidation, popupEditFormButton);
+profileFormValidator.enableValidation();
+
+const cardAddFormValidator = new FormValidator(configValidation, popupAddFormButton);
+cardAddFormValidator.enableValidation();
