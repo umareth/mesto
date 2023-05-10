@@ -1,10 +1,10 @@
 export class Card {
-    constructor(data, template, showimage){
+    constructor(data, template, showImage){
         this._name= data.name;
         this._link = data.link;
         this._template = template;
-        this._showimage = showimage;
-        // console.log(this._showimage)
+        this._showImage = showImage;
+        // console.log(this._showImage)
     }
 
     _getTemplate() {
@@ -23,8 +23,8 @@ export class Card {
    _setEventListeners () {
     this._cardRemove.addEventListener('click', this._handleRemove.bind(this));
     this._cardLike.addEventListener('click', this._handleLike.bind(this));
-    // this._cardImg.addEventListener('click', this._showimage(this, this._name, this._link));
-    this._cardImg.addEventListener('click', () => {this._showimage(this._name, this._link);});
+    // this._cardImg.addEventListener('click', this._showImage(this, this._name, this._link));
+    this._cardImg.addEventListener('click', () => {this._showImage(this._name, this._link);});
   }
 
     generateCard() {

@@ -1,5 +1,5 @@
 import {Card} from './Card.js';
-import {FormValidator} from './validate.js';
+import {FormValidator} from './FormValidator.js';
 
 
 const popupProfile = document.querySelector(".profile-popup");
@@ -110,8 +110,8 @@ function closePopup(popup) {
 // Функция закрытия попапа по нажатию ESC
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_opened')
-    closePopup(openPopup);
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
   }
 }
 
@@ -123,11 +123,13 @@ function closePopupOverlay(evt) {
     closePopup(evt.currentTarget);
 };
 
-document.querySelectorAll('.popup').forEach(evt => {evt.addEventListener('click', closePopupOverlay)});;
-
+const popups = document.querySelectorAll('.popup');
+popups.forEach(popup => {
+  popup.addEventListener('click', closePopupOverlay);
+});
 
 // Фнкция сохранения попапа профиля
-function handleFormSubmit(evt) {
+function submitEditProfileForm(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSunbtitle.textContent = popupSpeciality.value;
@@ -157,7 +159,7 @@ popupProfileClose.addEventListener("click", () => closePopup(popupProfile));
 popupAddingClose.addEventListener("click", () => closePopup(popupElementAdding));
 popupImageClose.addEventListener("click", () => closePopup(popupBanner));
 
-popupEditFormButton.addEventListener("submit", handleFormSubmit);
+popupEditFormButton.addEventListener("submit", submitEditProfileForm);
 popupAddFormButton.addEventListener("submit", handleFormSubmitCard);
 
 const profileFormValidator = new FormValidator(configValidation, popupEditFormButton);
