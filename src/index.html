@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="root">
     <div class="page">
       <header class="header">
         <img
-          src="./images/logo_mesto.svg"
+          src="<%=require('./images/logo_mesto.svg')%>"
           alt="Логотип Место_Россия"
           class="header__logo"
           />
@@ -20,7 +19,7 @@
         <section class="profile">
           <div class="profile__content">
             <img
-              src="./images/Avatar.png"
+              src="<%=require('./images/Avatar.png')%>"
               alt="Аватар профиля"
               class="profile__avatar"
               />
@@ -79,7 +78,7 @@
               placeholder="Название"
               class="popup__input popup__input_value_cardname"
               id="cardname"
-              name="cardname"
+              name="name"
               minlength="2"
               maxlength="30"
               required
@@ -90,7 +89,7 @@
               placeholder="Ссылка на картинку"
               class="popup__input popup__input_value_cardlink"
               id="cardlink"
-              name="cardlink"
+              name="link"
               required
               />
               <span class="popup__input-error cardlink-input-error"></span>
@@ -119,6 +118,5 @@
         </div>
       </template>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
