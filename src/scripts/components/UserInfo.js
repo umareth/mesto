@@ -7,7 +7,7 @@ export class UserInfo {
   getUserInfo() {
     return {
       name: this._profileNameElement.textContent,
-      speciality: this._infoElement.textContent
+      speciality: this._infoElement.textContent,
     };
   }
 

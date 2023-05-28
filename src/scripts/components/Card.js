@@ -1,15 +1,12 @@
 export class Card {
   constructor(data, galleryTemplate, showImage) {
     this._data = data;
-    // console.log('Data:', this._data); // Проверка значения title
-    // console.log('Title:', this._data.link); // Проверка значения title
-    // console.log('Link:', this._data.title); // Проверка значения link
     this._galleryTemplate = galleryTemplate;
     this._showImage = showImage;
   }
 
   _getTemplate() {
-    return document.querySelector(this._galleryTemplate).content.querySelector('.gallery__items').cloneNode(true);
+    return document.querySelector(this._galleryTemplate).content.querySelector(".gallery__items").cloneNode(true);
   }
 
   _handleRemove() {
@@ -18,29 +15,23 @@ export class Card {
   }
 
   _handleLike() {
-    this._cardLike.classList.toggle('gallery__like-button_active');
+    this._cardLike.classList.toggle("gallery__like-button_active");
   }
 
   _setEventListeners() {
-    this._cardRemove.addEventListener('click', this._handleRemove.bind(this));
-    this._cardLike.addEventListener('click', this._handleLike.bind(this));
-    this._cardImg.addEventListener('click', () => {
+    this._cardRemove.addEventListener("click", this._handleRemove.bind(this));
+    this._cardLike.addEventListener("click", this._handleLike.bind(this));
+    this._cardImg.addEventListener("click", () => {
       this._showImage({ title: this._data.name, link: this._data.link }); // Исправлено: передаем объект с данными картинки
     });
   }
 
   generateCard() {
     this._cardElement = this._getTemplate();
-    this._cardImg = this._cardElement.querySelector('.gallery__image');
-    // this._cardElement.querySelector('.gallery__title').textContent = this._name;
-    // this._cardImg.src = this._link;
-    this._cardTitle = this._cardElement.querySelector('.gallery__title');
-    this._cardRemove = this._cardElement.querySelector('.gallery__delete-button');
-    this._cardLike = this._cardElement.querySelector('.gallery__like-button');
-
-    // console.log('Title:', this._data.link); // Проверка значения title
-    // console.log('Link:', this._data.name); // Проверка значения link
-
+    this._cardImg = this._cardElement.querySelector(".gallery__image");
+    this._cardTitle = this._cardElement.querySelector(".gallery__title");
+    this._cardRemove = this._cardElement.querySelector(".gallery__delete-button");
+    this._cardLike = this._cardElement.querySelector(".gallery__like-button");
 
     this._cardImg.src = this._data.link;
     this._cardImg.alt = this._data.name;
