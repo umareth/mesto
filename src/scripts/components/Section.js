@@ -1,16 +1,16 @@
 export class Section {
-  constructor({ items, renderer }, galleryContainer) {
+  constructor(renderer, galleryContainer) {
     this.renderer = renderer;
-
-    this._items = items;
 
     this._container = galleryContainer;
   }
 
-  renderItems() {
-    this._items.forEach((element) => {
-      this.addItem(this.renderer(element));
-    });
+  renderItems(items) {
+    console.log('Получения массива в renderItems')
+    console.log(items)
+    items.forEach(item => {
+      this.renderer(item)
+    })
   }
   
 

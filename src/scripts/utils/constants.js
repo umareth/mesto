@@ -1,30 +1,4 @@
-const initialCards = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ];
-  
+
   const configValidation = {
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
@@ -47,6 +21,8 @@ const initialCards = [
   const popupAddFormButton = document.querySelector(".popup__form_type_add");
   const profileTitle = document.querySelector(".profile__title");
   const profileSunbtitle = document.querySelector(".profile__subtitle");
+  const profileImage = document.querySelector(".profile__avatar");
+
   
   const popupName = document.querySelector(".popup__input_value_name");
   const popupSpeciality = document.querySelector(".popup__input_value_speciality");
@@ -68,7 +44,6 @@ const initialCards = [
   const galleryTitle = document.querySelector(".gallery__title");
   
   export {
-    initialCards,
     configValidation,
     popupProfile,
     popupProfileClose,
@@ -94,6 +69,7 @@ const initialCards = [
     galleryButtonLike,
     galleryContainer,
     galleryDeleteButton,
-    galleryTitle
+    galleryTitle,
+    profileImage
   };
   

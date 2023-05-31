@@ -18,35 +18,61 @@ import {
   galleryContainer,
   profileTitle,
   profileSunbtitle,
+  profileImage,
   popupaddingOpenButton,
 } from "../scripts/utils/constants.js";
 
-const userInfo = new UserInfo(profileTitle, profileSunbtitle);
+const userInfo = new UserInfo(profileTitle, profileSunbtitle, profileImage);
 
 const popupShowImage = new PopupWithImage(popupImageContainer);
 popupShowImage.setEventListeners();
 
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (element) => {
-      const card = new Card(element, galleryTemplate, popupShowImage.open);
-      return card.generateCard();
-    },
-  },
-  galleryContainer
-);
-section.renderItems();
+import Api from '../scripts/components/Api.js';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
+  headers: {
+    authorization: '2e9ea00f-a4b6-41b7-9927-84e2f267cb21',
+    'Content-Type': 'application/json'
+  }
+});
+
+function createCard(initialCard) {
+  console.log("вызов createCard")
+  const card = new Card (initialCard, galleryTemplate, popupShowImage.open)
+  return card.generateCard();
+}
+
+const section = new Section((element) => {
+  section.addItem(createCard(element))
+},
+  galleryContainer);
+
+
 
 const popupFormEdit = new PopupWithForm(popupProfile, (InputValue) => {
-  userInfo.setUserInfo(InputValue);
-  popupFormEdit.close();
+  console.log('Проверка в popupFormEdit');
+  api.setUserInfo(InputValue)
+    .then(res => {
+      userInfo.setUserInfo(res);
+      popupFormEdit.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
 });
 popupFormEdit.setEventListeners();
 
-const popupCardAdd = new PopupWithForm(popupElementAdding, (InputValues) => {
-  section.addItem(section.renderer(InputValues));
-  popupCardAdd.closePopup();
+const popupCardAdd = new PopupWithForm(popupElementAdding, (data) => {
+  api.setUserInfo(data)
+    .then(initialCard => {
+      section.addItem(createCard(initialCard));
+      popupCreateCard.closePopup();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => popupCreateCard.setdefaultTextBtn())
 });
 popupCardAdd.setEventListeners();
 
@@ -66,3 +92,14 @@ popupaddingOpenButton.addEventListener("click", () => {
   cardAddFormValidator.resetErrors();
   popupCardAdd.open();
 });
+
+
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([user, initialCards]) => {
+    section.renderItems(initialCards);
+    userInfo.setUserInfo(user);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+

@@ -1,8 +1,12 @@
 export class Card {
   constructor(data, galleryTemplate, showImage) {
     this._data = data;
+    console.log('Проверка Card')
+    console.log(this._data)
     this._galleryTemplate = galleryTemplate;
+    console.log(this._galleryTemplate)
     this._showImage = showImage;
+    console.log(this._showImage)
   }
 
   _getTemplate() {
