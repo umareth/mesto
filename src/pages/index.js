@@ -128,7 +128,6 @@ const popupEditAvatar = new PopupWithForm(popupEditImage, (InputValue) => {
   api
     .setAvatar(InputValue)
     .then((res) => {
-      console.log(res);
 
       userInfo.setUserInfo(res);
       popupEditAvatar.close();

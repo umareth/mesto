@@ -92,12 +92,12 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
-  setAvatar(data) {
+  setAvatar(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar: link.avatar,
       }),
     })
       .then(this._processingServerResponse)

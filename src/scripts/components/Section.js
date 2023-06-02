@@ -1,7 +1,6 @@
 export class Section {
   constructor(renderer, galleryContainer) {
     this.renderer = renderer;
-
     this._container = galleryContainer;
   }
 

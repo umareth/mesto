@@ -10,8 +10,8 @@ export class Card {
     this._myId = data.myId;
     this._ownerId = data.owner._id;
     this._cardId = data._id;
-    this._likes = data.likes;
     this._likeCount = data.likes.length;
+    this._likes = data.likes;
   }
 
   
@@ -20,12 +20,12 @@ export class Card {
     return document.querySelector(this._galleryTemplate).content.querySelector(".gallery__items").cloneNode(true);
   }
 
-  _handleLike() {
-    this._getlike(this._cardLike, this._cardId);
-  }
-
   _checkLike = () => {
     return this._likes.some(like => like._id === this._myId);
+  }
+
+  _handleLike() {
+    this._getlike(this._cardLike, this._cardId);
   }
 
   _isLiked = () => {
@@ -49,13 +49,8 @@ export class Card {
     this._openPopupDeleteItem(this, this._cardId);
   }
 
-  _checkGalleryTrash() {
-    if (this._myId === this._ownerId) {
-      this._cardRemove.style.visibility = "visible" 
-    } else { 
-      console.log('скрыть')
-      this._cardRemove.style.visibility = "hidden" };
-
+  _checkTrashBtn() {
+  this._cardRemove.style.visibility = this._myId === this._ownerId ? "visible" : "hidden";
   }
 
   handleCard() {
@@ -81,10 +76,10 @@ export class Card {
     this._cardImg.src = this._data.link;
     this._cardImg.alt = this._data.name;
     this._cardTitle.textContent = this._data.name;
-    console.log('вызываются функции')
+    // console.log('вызываются функции')
     this._isLiked();
     this._countLikes();
-    this._checkGalleryTrash();
+    this._checkTrashBtn();
     this._setEventListeners();
     return this._cardElement;
   }

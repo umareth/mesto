@@ -1,9 +1,6 @@
 export default class Popup {
   constructor(popupElement) {
-    console.log('Вход class Popuр')
-
-    console.log(popupElement)
-
+    // console.log(popupElement)
     this._popup = popupElement;
     this._form = this._popup.querySelector(".popup__form");
     this._closeButton = this._popup.querySelector(".popup__close-btn");
@@ -11,7 +8,6 @@ export default class Popup {
   }
 
   open() {
-    console.log('вызван open')
     this._popup.classList.add("popup_opened");
     document.addEventListener("keydown", this._handleEscClose);
   }
