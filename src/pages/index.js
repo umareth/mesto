@@ -1,12 +1,12 @@
 import "./index.css";
-import { Card } from "../scripts/components/Card.js";
-import { FormValidator } from "../scripts/components/FormValidator.js";
-import { Section } from "../scripts/components/Section";
-import PopupDeleteCard from "../scripts/components/PopupDeleteCard.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 
-import PopupWithImage from "../scripts/components/PopupWithImage.js";
-import PopupWithForm from "../scripts/components/PopupWithForm.js";
-import { UserInfo } from "../scripts/components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 import {
   popupOpenButton,
   popupEditFormButton,
@@ -25,14 +25,14 @@ import {
   popupEditImage,
   popupEditImageBtn,
   popupAvatarFormButton,
-} from "../scripts/utils/constants.js";
+} from "../utils/constants.js";
 
 const userInfo = new UserInfo(profileTitle, profileSunbtitle, profileImage);
 
 const popupShowImage = new PopupWithImage(popupImageContainer);
 popupShowImage.setEventListeners();
 
-import Api from "../scripts/components/Api.js";
+import Api from "../components/Api.js";
 
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-66",
@@ -90,9 +90,9 @@ const section = new Section((element) => {
   section.addItem(createCard(element));
 }, galleryContainer);
 
-const popupFormEdit = new PopupWithForm(popupProfile, (InputValue) => {
+const popupFormEdit = new PopupWithForm(popupProfile, (inputValues) => {
   api
-    .setUserInfo(InputValue)
+    .setUserInfo(inputValues)
     .then((res) => {
       userInfo.setUserInfo(res);
       popupFormEdit.close();
@@ -106,11 +106,11 @@ const popupFormEdit = new PopupWithForm(popupProfile, (InputValue) => {
 });
 popupFormEdit.setEventListeners();
 
-const popupCardAdd = new PopupWithForm(popupElementAdding, (InputValue) => {
+const popupCardAdd = new PopupWithForm(popupElementAdding, (inputValues) => {
   api
-    .addCard(InputValue)
+    .addCard(inputValues)
     .then((initialCard) => {
-      initialCard.myId = userInfo.setId();
+      initialCard.myId = userInfo.getId();
       section.addItemPrepend(createCard(initialCard));
       popupCardAdd.close();
     })
@@ -171,7 +171,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
     initialCards.forEach((initialCard) => {
       initialCard.myId = user._id;
     });
-    userInfo.setId(user._id);
+    userInfo.getId(user._id);
     userInfo.setUserInfo(user);
     section.renderItems(initialCards);
   })

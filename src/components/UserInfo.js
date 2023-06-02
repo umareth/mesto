@@ -19,10 +19,6 @@ export class UserInfo {
     this._infoElement.textContent = about;
   }
 
-  setId() {
-    return this._id;
-  }
-
   getId() {
     return this._id;
   }

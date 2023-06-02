@@ -5,7 +5,7 @@ export default class Api {
     this._token = headers.authorization;
   }
 
-  _processingServerResponse(res) {
+  _getResponseData(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -19,8 +19,7 @@ export default class Api {
         authorization: this._token,
       },
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   getUserInfo() {
@@ -29,8 +28,7 @@ export default class Api {
         authorization: this._token,
       },
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   setUserInfo(InputValue) {
@@ -42,8 +40,7 @@ export default class Api {
         about: InputValue.speciality,
       }),
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   addCard(InputValue) {
@@ -55,8 +52,7 @@ export default class Api {
         link: InputValue.link,
       }),
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   addLike(cardId) {
@@ -66,8 +62,7 @@ export default class Api {
         authorization: this._token,
       },
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   removeLike(cardId) {
@@ -77,8 +72,7 @@ export default class Api {
         authorization: this._token,
       },
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   removeCard(cardId) {
@@ -88,8 +82,7 @@ export default class Api {
         authorization: this._token,
       },
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 
   setAvatar(link) {
@@ -100,7 +93,6 @@ export default class Api {
         avatar: link.avatar,
       }),
     })
-      .then(this._processingServerResponse)
-      .catch((err) => console.log(err));
+      .then(this._getResponseData)
   }
 }
