@@ -6,15 +6,16 @@ export class Section {
   }
 
   renderItems(items) {
-    console.log('Получения массива в renderItems')
-    console.log(items)
     items.forEach(item => {
       this.renderer(item)
     })
   }
-  
 
   addItem(item) {
+    this._container.append(item);
+  }
+
+  addItemPrepend(item) {
     this._container.prepend(item);
   }
 }

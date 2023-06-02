@@ -19,6 +19,7 @@
   const popupForm = document.querySelector(".popup__form");
   const popupEditFormButton = document.querySelector(".popup__form_type_edit");
   const popupAddFormButton = document.querySelector(".popup__form_type_add");
+  const popupAvatarFormButton = document.querySelector(".popup__form_type_avatar");
   const profileTitle = document.querySelector(".profile__title");
   const profileSunbtitle = document.querySelector(".profile__subtitle");
   const profileImage = document.querySelector(".profile__avatar");
@@ -35,6 +36,14 @@
   const popupCaption = document.querySelector(".popup__caption");
   const popupImageContainer = document.querySelector(".popup_banner");
   const popupImageClose = document.querySelector(".popup__close-btn");
+  const popupSubmitRemove = document.querySelector(".popup_del_card");
+  const popupEditImage = document.querySelector(".popup_avatar");
+
+  const popupEditImageBtn = document.querySelector('.profile__avatar-button');
+
+
+
+
   
   const galleryTemplate = "#gallery__template";
   const galleryButtonLike = document.querySelectorAll(".gallery__like-button");
@@ -70,6 +79,10 @@
     galleryContainer,
     galleryDeleteButton,
     galleryTitle,
-    profileImage
+    popupSubmitRemove,
+    profileImage,
+    popupEditImage,
+    popupEditImageBtn,
+    popupAvatarFormButton
   };
   
